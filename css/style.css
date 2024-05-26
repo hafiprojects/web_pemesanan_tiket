@@ -286,7 +286,8 @@ button {
 }
 
 .taital_main {
-    padding-left: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .book_bt {
@@ -298,18 +299,20 @@ button {
 .book_bt a {
     width: 100%;
     float: left;
-    font-size: 16px;
-    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
     text-align: center;
-    background-color: #ffd35a;
-    border: 2px solid #ffffff;
+    background-color: transparent;
+    border: 2px solid black;
     border-radius: 30px;
     padding: 9px 0px;
 }
 
 .book_bt a:hover {
-    background-color: transparent;
-    border: 2px solid #ffffff;
+    background-color: #ffd35a;
+    color: #ffffff;
+    border: 2px solid black;
 }
 
 .carousel-indicators li {
@@ -444,7 +447,8 @@ button {
     text-transform: uppercase;
     font-weight: bold;
     text-align: center;
-    padding-top: 30px;
+    padding-top: 45px;
+    padding-left: 45px;
 }
 
 .box_main {
@@ -1089,3 +1093,6 @@ button {
     padding: .5rem 0px;
 }
 
+.btn-login-text {
+    font-size: 14pt;
+}

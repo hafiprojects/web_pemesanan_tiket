@@ -148,7 +148,8 @@
         font-size: 40px;
     }
     .taital_main {
-        padding-left: 120px;
+        padding-left: 110px;
+        padding-right: 110px;
     }
     #my_slider a.carousel-control-prev {
         left: 45px;
@@ -168,6 +169,7 @@
     }
     .category_text {
         font-size: 20px;
+        padding-left: unset;
     }
     .readable_text {
         font-size: 27px;
@@ -228,7 +230,8 @@
         left: 40px;
     }
     .taital_main {
-        padding-left: 80px;
+        padding-left: 70px;
+        padding-right: 70px;
     }
     .banner_section {
         padding-bottom: 90px;
@@ -242,6 +245,7 @@
     }
     .category_text {
         padding-bottom: 40px;
+        padding-left: unset;
     }
     .category_section {
         border-radius: 10px;
@@ -383,6 +387,7 @@
         display: initial;
     }
     .category_text {
+        padding-left: unset;
         padding-bottom: 40px;
     }
     .category_section {
@@ -506,6 +511,7 @@
     }
     .category_text {
         padding-bottom: 40px;
+        padding-left: unset;
     }
     .category_section {
         border-radius: 10px;
