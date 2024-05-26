@@ -89,7 +89,34 @@ $no = 0;
                                                 <td><?php echo $no ?></td>
                                                 <td><img src="../<?php echo $data["image"] ?>" height="130"></td>
                                                 <td><a class="btn btn-info" href="edit_banner.php?id=<?php echo $data['id'] ?>">Edit</a>
-                                                    <a class="btn btn-danger" href="#.php?id=<?php echo $data['id'] ?>">Hapus</a>
+                                                    <!-- <a class="btn btn-danger" href="delete_banner.php?id=<?php echo $data['id'] ?>">Hapus</a> -->
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete<?php echo $data['id'] ?>">
+                                                        Hapus
+                                                    </button>
+                                                    <!-- Modal -->
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="modalDelete<?php echo $data['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Hapus Banner</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <form action="delete_banner.php" method="POST">
+                                                                    <div class="modal-body">
+                                                                        Apakah anda yakin ingin menghapus banner ini? <br>
+                                                                        <input type="hidden" name="id_banner" value="<?php echo $data['id'] ?>">
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -125,8 +152,6 @@ $no = 0;
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

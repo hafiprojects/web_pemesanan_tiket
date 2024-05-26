@@ -219,4 +219,18 @@ class Connect_db
             echo "</script>";
         }
     }
+
+    // Hapus Banner
+    function delete_Banner($id)
+    {
+        $sql = "DELETE FROM banner WHERE id = $id";
+        $query = mysqli_query($this->connect_db, $sql);
+        if ($query) {
+            header("Location: index_banner.php");
+        } else {
+            echo "<script>";
+            echo "alert('Banner Gagal Dihapus karena masalah Database')";
+            echo "</script>";
+        }
+    }
 }
