@@ -7,7 +7,8 @@ if (!isset($_SESSION["login_admin"])) {
 }
 $id_nama = $_SESSION["login_admin"];
 $result_data = $db->db_From_Id("SELECT * FROM admin WHERE id = '$id_nama'");
-$result_table = $db->db_From_Id("SELECT * FROM user_order WHERE status = 'Cetak Tiket'");
+$result_table = $db->get_Banner();
+$no = 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,13 +21,11 @@ $result_table = $db->db_From_Id("SELECT * FROM user_order WHERE status = 'Cetak 
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin</title>
+    <title>Admin - Manajemen Banner</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -63,48 +62,37 @@ $result_table = $db->db_From_Id("SELECT * FROM user_order WHERE status = 'Cetak 
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Pesanan Ter Verifikasi</h1>
-                    <p class="mb-4">Data Dibawah Adalah Data Yang Sudah Di Verifikasi Oleh Admin, Jika Sudah Masuk Harap Klik Masuk Pada Kolom Yang Sesuai</p>
+                    <h1 class="h3 mb-2 text-gray-800">Manajemen Banner</h1>
+                    <p class="mb-4">Manajemen Banner Website</p>
+
+                    <a href="add_banner.php" class="btn btn-primary mb-4">Tambah Banner</a>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Pesanan Terverifikasi</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Daftar Banner</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Jenis Pesanan</th>
-                                            <th>ID Tiket</th>
-                                            <th>Username</th>
-                                            <th>Catatan</th>
-                                            <th>Waktu Pesanan</th>
-                                            <th>Masuk</th>
+                                            <th>No</th>
+                                            <th>Banner Image</tah>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Jenis Pesanan</th>
-                                            <th>ID Tiket</th>
-                                            <th>Username</th>
-                                            <th>Catatan</th>
-                                            <th>Waktu Pesanan</th>
-                                            <th>Masuk</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
-                                        <?php foreach ($result_table as $data):?>
-                                        <tr>
-                                            <td><?php echo $data["jenis_pesanan"]?></td>
-                                            <td><?php echo $data["id_tiket"]?></td>
-                                            <td><?php echo $data["order_id"]?></td>
-                                            <td><?php echo $data["catatan"]?></td>
-                                            <td><?php echo $data["waktu_pesanan"]?></td>
-                                            <td><a class="btn btn-danger" href="ifuse.php?id=<?php echo $data['id']?>">Digunakan</a></td>
-                                        </tr>
-                                        <?php endforeach?>
+                                        <?php foreach ($result_table as $data) : ?>
+                                            <?php $no++ ?>
+                                            <tr>
+                                                <td><?php echo $no ?></td>
+                                                <td><img src="../<?php echo $data["image"] ?>" height="130"></td>
+                                                <td><a class="btn btn-info" href="edit_banner.php?id=<?php echo $data['id'] ?>">Edit</a>
+                                                    <a class="btn btn-danger" href="#.php?id=<?php echo $data['id'] ?>">Hapus</a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -138,25 +126,7 @@ $result_table = $db->db_From_Id("SELECT * FROM user_order WHERE status = 'Cetak 
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

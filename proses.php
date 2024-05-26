@@ -179,4 +179,30 @@ class Connect_db
         }
     }
     // End Of Signin Admin
+
+    // Ambil Banner
+    function get_Banner()
+    {
+        $sql = "SELECT * FROM banner";
+        $query = mysqli_query($this->connect_db, $sql);
+        $result = [];
+        while ($data = mysqli_fetch_array($query)) {
+            $result[] = $data;
+        }
+        return $result;
+    }
+
+    // Simpan Banner
+    function simpan_Banner($gambar)
+    {
+        $sql = "INSERT INTO banner (image) VALUES ('$gambar')";
+        $query = mysqli_query($this->connect_db, $sql);
+        if ($query) {
+            header("Location: index_banner.php");
+        } else {
+            echo "<script>";
+            echo "alert('Banner Gagal Ditambahkan karena masalah Database')";
+            echo "</script>";
+        }
+    }
 }
