@@ -12,12 +12,14 @@ $result_data = $db->db_From_Id("SELECT * FROM admin WHERE id = '$id_nama'");
 $photoPath = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["simpan"])) {
-    if (isset($_FILES["photo"])) {
+    if (isset($_FILES["photo"]) && $_FILES["photo"]["error"] !== UPLOAD_ERR_NO_FILE) {
         $photo = $_FILES["photo"];
         $photoPath = uploadPhoto($photo);
+    }else{
+        $photoPath = 'NoFileIncluded';
     }
 
-    if (in_array($photoPath, ['ExtensionNotValid', 'ErrorUploadingFile'])) {
+    if (in_array($photoPath, ['ExtensionNotValid', 'ErrorUploadingFile', 'NoFileIncluded'])) {
         if ($photoPath == 'ExtensionNotValid') {
             echo '<script>';
             echo 'alert("Ekstensi file tidak valid")';
@@ -27,6 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["simpan"])) {
         if ($photoPath == 'ErrorUploadingFile') {
             echo '<script>';
             echo 'alert("Gagal upload gambar")';
+            echo '</script>';
+        }
+
+        if ($photoPath == 'NoFileIncluded') {
+            echo '<script>';
+            echo 'alert("File tidak ada")';
             echo '</script>';
         }
     } else {

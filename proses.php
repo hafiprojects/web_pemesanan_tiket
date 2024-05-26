@@ -205,4 +205,18 @@ class Connect_db
             echo "</script>";
         }
     }
+
+    // Update Banner
+    function update_Banner($gambar, $id)
+    {
+        $sql = "UPDATE banner set image = '$gambar' WHERE id = $id";
+        $query = mysqli_query($this->connect_db, $sql);
+        if ($query) {
+            header("Location: index_banner.php");
+        } else {
+            echo "<script>";
+            echo "alert('Banner Gagal Diupdate karena masalah Database')";
+            echo "</script>";
+        }
+    }
 }
