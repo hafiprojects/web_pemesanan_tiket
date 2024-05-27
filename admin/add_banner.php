@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["simpan"])) {
         $photoPath = 'NoFileIncluded';
     }
 
-    if (in_array($photoPath, ['ExtensionNotValid', 'ErrorUploadingFile', 'NoFileIncluded'])) {
+    if (in_array($photoPath, ['ExtensionNotValid', 'ErrorUploadingFile', 'NoFileIncluded', 'MaxFileSizeExceeded'])) {
         if ($photoPath == 'ExtensionNotValid') {
             echo '<script>';
             echo 'alert("Ekstensi file tidak valid")';
@@ -35,6 +35,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["simpan"])) {
         if ($photoPath == 'NoFileIncluded') {
             echo '<script>';
             echo 'alert("File tidak ada")';
+            echo '</script>';
+        }
+
+        if ($photoPath == 'MaxFileSizeExceeded') {
+            echo '<script>';
+            echo 'alert("Ukuran file terlalu besar, tidak boleh lebih dari 5MB")';
             echo '</script>';
         }
     } else {
@@ -110,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["simpan"])) {
                                         <label class="col-lg-3 col-form-label">Input Banner <span class="text-danger">*</span></label>
                                         <div class="col-lg-9">
                                             <input type="file" name="photo" id="photo" class="d-block" onchange="loadFile(event)">
-                                            <p style="font-size: 10pt">Gambar maksimal berukuran 4MB</p>
+                                            <p style="font-size: 10pt">Gambar maksimal berukuran 5MB</p>
                                         </div>
                                         <div class="col-lg-12">
                                             <hr>

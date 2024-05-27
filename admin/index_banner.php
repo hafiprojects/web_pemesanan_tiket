@@ -89,7 +89,6 @@ $no = 0;
                                                 <td><?php echo $no ?></td>
                                                 <td><img src="../<?php echo $data["image"] ?>" height="130"></td>
                                                 <td><a class="btn btn-info" href="edit_banner.php?id=<?php echo $data['id'] ?>">Edit</a>
-                                                    <!-- <a class="btn btn-danger" href="delete_banner.php?id=<?php echo $data['id'] ?>">Hapus</a> -->
                                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete<?php echo $data['id'] ?>">
                                                         Hapus
                                                     </button>

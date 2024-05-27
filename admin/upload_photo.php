@@ -3,6 +3,7 @@ function uploadPhoto($file, $targetDir = '../uploads/')
 {
     // Tentukan ekstensi yang diperbolehkan
     $allowedExtensions = ['jpg', 'jpeg', 'png'];
+    $maxFileSize = 5242880; // 5MB in bytes
 
     // Ambil informasi file
     $fileName = basename($file['name']);
@@ -18,6 +19,11 @@ function uploadPhoto($file, $targetDir = '../uploads/')
     if (!in_array($fileExt, $allowedExtensions)) {
         return "ExtensionNotValid";
         // return "Ekstensi file tidak diperbolehkan. Hanya jpg, jpeg, png, dan gif yang diperbolehkan.";
+    }
+
+    // Periksa ukuran file
+    if ($fileSize > $maxFileSize) {
+        return "MaxFileSizeExceeded";
     }
 
     // Periksa apakah ada error saat mengunggah
