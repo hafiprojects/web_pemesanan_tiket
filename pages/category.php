@@ -1,3 +1,13 @@
+<?php
+include("../proses.php");
+
+$db = new Connect_db();
+
+$slug = $_GET['article'];
+
+$artikel_data = $db->db_From_Id("SELECT * FROM article where slug = '$slug'");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,6 +41,14 @@
    <link rel="stylesheet" href="../css/owl.carousel.min.css">
    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+   <style>
+      .custom_section{
+         h1, h2, h3, h4, h5, h6 {
+            padding: 0px 20px;
+         }
+      }
+   </style>
 </head>
 
 <body>
@@ -80,88 +98,18 @@
    <!--category section start -->
 
    <div class="container">
-
-      <div class="category_section_2">
-
-
-
+      <div class="category_section_2 custom_section">
          <div class="row">
             <div class="col-lg-400 col-sm-12">
                <div class="beds_section active">
-                  <h1 class="bed_text" style="font-family: Arial, Helvetica, sans-serif ;">EVENT INTERNASIONAL DI BANDUNG</h1>
-                  <div><img src="../images/bandung.jpeg" class="image_2"></div>
+                  <h1 class="bed_text" style="font-family: Arial, Helvetica, sans-serif ;"><?php echo $artikel_data[0]['title'] ?></h1>
+                  <div><img src="../<?php echo $artikel_data[0]['thumbnail'] ?>" class="image_2 mb-4"></div>
 
-                  <p class="ipsum_text" style="text-align: justify; font-family: Arial, Helvetica, sans-serif;">Al Hidayah Horse Stable berdiri pada tanggal 21 November 2021 berawal dengan sepasang kuda yang dipinjamkan oleh Pimpinan Pengadaian Syariah Cabang Jambi. Setelah melihat minat dan bakat santri yang antusias dalam olahraga berkuda, dengan dukungan dari para santri dan pimpinan pondok PKP Al Hidayah mendorong Tim Al Hidayah Horse Stable untuk memperluas koleksi kuda dengan membeli sepasang lainnya dari Sumatra Barat. Tim Al Hidayah Horse Stable tidak hanya meningkatkan jumlah kuda, tetapi juga mengembangkan kemampuan di bidang panahan.
-                     Pada tahun 2023, fasilitas Al Hidayah Horse Stable berkembang pesat, memiliki sepuluh ekor kuda (enam jantan dan empat betina). Keberhasilan ini mencerminkan pertumbuhan fisik dan fokus kuat pada pengembangan keterampilan olahraga kuda dan panahan. Dukungan dari pimpinan pondok dan antusiasme para santri mendorong Tim Al Hidayah Horse Stable mencapai prestasi signifikan. Al Hidayah Horse Stable berhasil menciptakan lingkungan yang mendukung pertumbuhan fisik kuda-kuda dan membentuk atlet berkuda yang handal di bidang panahan.
-                     Hal tersebut menjadikan dasar dalam penetapan tujuan berdirinya Al Hidayah Horse Stable. Di antaranya:
-                     1. Menjadikan stable yang berstandar nasional
-                     2. Melahirkan atlet yang siap bersaing secara nasional maupun internasional
-                     3. Menjadikan fasilitas pelatihan yang safety, proposional, mudah dan terjangkau.
-                     4. Melatih keberanian, kesabaran serta kefokusan dalam berkuda dan memanah
-                     5. Menjalin ikatan antara rider dan kuda
-                     Tim Al Hidayah Horse Stable aktif berkompetisi, meraih prestasi di berbagai event seperti HBA di Sawahlunto, Gesit Se-sumatra, Adventure Se-kota Jambi, Skoring Ramadhan Day Se-kota Jambi, 1000 Kyai dan Santri Memanah Se-sumatra, Piala Gubernur Cup Palembang 2023 di Sumatra Selatan (HBA dan Archery), Adventure Kids Se-kota Jambi, serta ivent Indonesian CUP internasional di provinsu jawa barata.
-                     Al Hidayah Horse Stable juga menjadi tuan rumah untuk event regional Sumatra memperebutkan Piala Gubernur Jambi Tahun 2023, dengan sukses event berkuda memanah se-sumatra yang diikuti oleh lebih dari 300 peserta dari Jambi, Riau, Palembang, Medan dan Sumatra Barat. Keberhasilan ini mencerminkan kontribusi positif Al Hidayah Horse Stable dalam memajukan olahraga kuda dan panahan di tingkat regional.
-                  </p>
-                  <p class="ipsum_text" style="text-align: justify; font-family: Arial, Helvetica, sans-serif;">VISI, MISI DAN MOTTO AL HIDAYAH HORSE STABLE</p>
-
-                  <p class="ipsum_text" style="text-align: justify; font-family: Arial, Helvetica, sans-serif;">VISI :
-                     “MEMBENTUK ATLET BERKUDA MEMANAH YANG UNGGUL DALAM PRESTASI FISIK SERTA MEMILIKI KARAKTER YANG BERINTEGRITAS.”</p>
-
-                  <p class="ipsum_text" style="text-align: justify; font-family: Arial, Helvetica, sans-serif;">MISI :
-                     1. MENYEDIAKAN FASILITAS PELATIHAN YANG BERKUALITAS TINGGI.
-                     2. MENCIPTAKAN ATLET BERKUDA MEMANAH MELALUI PROGRAM UNGGULAN.
-                     3. MEMBERIKAN PELATIHAN NILAI-NILAI MORAL DAN ETIKA YANG BERINTEGRITAS.</p>
-
-                  <p class="ipsum_text" style="text-align: justify; font-family: Arial, Helvetica, sans-serif;">MOTTO:
-                     “TIDAK AKAN TANGGUH JIKA BELUM MENUNGGANG, TIDAK AKAN SAMPAI TUJUAN JIKA BELUM MELESAT”</p>
-
-
+                  <div class="ipsum_text">
+                     <?php echo $artikel_data[0]['content'] ?>
+                  </div>
                </div>
             </div>
-            <!----
-               <div class="col-lg-4 col-sm-12">
-                  <div class="beds_section">
-                     <h1 class="bed_text" style="font-family: Arial, Helvetica, sans-serif ;">EVENT PANAHAN PROVINSI JAMBI</h1>
-                     <div><img src="../images/atlet.jpeg" class="image_2"></div>
-                     <div class="seemore_bt"><a href="#" style="font-family: Arial, Helvetica, sans-serif ;">see More</a></div>
-                  </div>
-               </div>
-               <div class="col-lg-4 col-sm-12">
-                  <div class="beds_section">
-                     <h1 class="bed_text" style="font-family: Arial, Helvetica, sans-serif ;">TIM PEMANAH PUTRI AL-HIDAYAH HORSE STABLE</h1>
-                     <div><img src="../images/putri.jpeg" class="image_2"></div>
-                     <div class="seemore_bt"><a href="#" style="font-family: Arial, Helvetica, sans-serif ;">see More</a></div>
-                  </div>
-               </div>
-               <br>
-            </div>
-         </div>
-         <div class="category_section_2">
-            <div class="row">
-               <div class="col-lg-4 col-sm-12">
-                  <div class="beds_section active">
-                     <h1 class="bed_text" style="font-family: Arial, Helvetica, sans-serif ;">EVENT SUMATERA DI PALEMBANG</h1>
-                     <div><img src="../images/palembang.jpeg" class="image_2"></div>
-                     <div class="seemore_bt"><a href="#" style="font-family: Arial, Helvetica, sans-serif ;">see More</a></div>
-                  </div>
-               </div>
-               <div class="col-lg-4 col-sm-12">
-                  <div class="beds_section">
-                     <h1 class="bed_text" style="font-family: Arial, Helvetica, sans-serif ;">PELATIHAN UNTUK PELATIH BERKUDA</h1>
-                     <div><img src="../images/pelatihan.jpeg" class="image_2"></div>
-                     <div class="seemore_bt"><a href="#" style="font-family: Arial, Helvetica, sans-serif ;">see More</a></div>
-                  </div>
-               </div>
-               <div class="col-lg-4 col-sm-12">
-                  <div class="beds_section">
-                     <h1 class="bed_text" style="font-family: Arial, Helvetica, sans-serif ;">ENDURENS DI TUGU KERIS SIGINJAI</h1>
-                     <div><img src="../images/endurens.jpeg" class="image_2"></div>
-                     <div class="seemore_bt"><a href="#" style="font-family: Arial, Helvetica, sans-serif ;" >see More</a></div>
-                  </div>
-               </div>
-               <br>
-            </div>
-   --->
          </div>
       </div>
       <!-- category section end -->

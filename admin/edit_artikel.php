@@ -161,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["submit"])) {
                                         </span>
                                         <br>
                                         <a class="btn btn-secondary" href="index_Artikel.php">Kembali</a>
-                                        <input type="submit" class="btn btn-primary" name="submit">Simpan</button>
+                                        <input type="submit" class="btn btn-primary" name="submit"></button>
                                     </div>
                                 </div>
                             </form>

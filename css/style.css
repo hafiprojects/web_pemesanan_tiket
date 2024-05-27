@@ -125,13 +125,13 @@ button:focus {
     outline: none;
 }
 
-ul,
+/* ul,
 li,
 ol {
     margin: 0px;
     padding: 0px;
     list-style: none;
-}
+} */
 
 p {
     margin: 20px;
@@ -579,7 +579,7 @@ button {
     font-size: 24px;
     font-weight: bold;
     text-align: center;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 .image_2 {
@@ -646,7 +646,7 @@ button {
     color: #131313;
     font-size: 24px;
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 .seemore_bt_1 {

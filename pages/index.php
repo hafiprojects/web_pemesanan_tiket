@@ -1,3 +1,11 @@
+<?php
+include("../proses.php");
+
+$db = new Connect_db();
+
+$artikel_data = $db->get_Artikel();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,27 +94,15 @@
          <h1 class="touch_taital mb-5" style="font-family: Arial, Helvetica, sans-serif ;">Kegiatan Al-Hidayah Horse Stable</h1>
 
          <div class="row">
-            <div class="col-lg-4 col-sm-12">
-               <div class="beds_section">
-                  <h1 class="bed_text" style="font-family: Arial, Helvetica, sans-serif ;">Event Internasional di Bandung</h1>
-                  <div><img src="../images/bandung.jpeg" class="image_2"></div>
-                  <div class="seemore_bt"><a href="category.php" style="font-family: Arial, Helvetica, sans-serif ;">Lihat Artikel</a></div>
+            <?php foreach ($artikel_data as $key => $data) : ?>
+               <div class="col-lg-4 col-sm-12">
+                  <div class="beds_section">
+                     <h1 class="bed_text" style="font-family: Arial, Helvetica, sans-serif ;"><?php echo $data['title'] ?></h1>
+                     <div><img src="../<?php echo $data['thumbnail'] ?>" class="image_2"></div>
+                     <div class="seemore_bt"><a href="category.php?article=<?php echo $data['slug']; ?>" style="font-family: Arial, Helvetica, sans-serif ;">Lihat Artikel</a></div>
+                  </div>
                </div>
-            </div>
-            <div class="col-lg-4 col-sm-12">
-               <div class="beds_section">
-                  <h1 class="bed_text" style="font-family: Arial, Helvetica, sans-serif ;">EVENT PANAHAN PROVINSI JAMBI</h1>
-                  <div><img src="../images/atlet.jpeg" class="image_2"></div>
-                  <div class="seemore_bt"><a href="#" style="font-family: Arial, Helvetica, sans-serif ;">Lihat Artikel</a></div>
-               </div>
-            </div>
-            <div class="col-lg-4 col-sm-12">
-               <div class="beds_section">
-                  <h1 class="bed_text" style="font-family: Arial, Helvetica, sans-serif ;">TIM PEMANAH PUTRI AL-HIDAYAH HORSE STABLE</h1>
-                  <div><img src="../images/putri.jpeg" class="image_2"></div>
-                  <div class="seemore_bt"><a href="#" style="font-family: Arial, Helvetica, sans-serif ;">Lihat Artikel</a></div>
-               </div>
-            </div>
+            <?php endforeach; ?>
             <br>
          </div>
       </div>
