@@ -97,13 +97,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["simpan"])) {
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Update Banner</h1>
-                    <p class="mb-4">halaman Update banner</p>
+                    <h1 class="h3 mb-2 text-gray-800">Edit Banner</h1>
+                    <p class="mb-4">halaman Edit banner</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Update Banner</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Edit Banner</h6>
                         </div>
                         <div class="card-body">
                             <form action="" method="post" enctype="multipart/form-data">

@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["simpan"])) {
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">Input Banner <span class="text-danger">*</span></label>
                                         <div class="col-lg-9">
-                                            <input type="file" name="photo" id="photo" class="d-block" onchange="loadFile(event)">
+                                            <input type="file" name="photo" id="photo" class="d-block" onchange="loadFile(event)" required>
                                             <p style="font-size: 10pt">Gambar maksimal berukuran 5MB</p>
                                         </div>
                                         <div class="col-lg-12">
