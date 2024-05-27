@@ -233,4 +233,59 @@ class Connect_db
             echo "</script>";
         }
     }
+
+
+    // Get Artikel
+    function get_Artikel()
+    {
+        $sql = "SELECT * FROM article order by created_at DESC";
+        $query = mysqli_query($this->connect_db, $sql);
+        $result = [];
+        while ($data = mysqli_fetch_array($query)) {
+            $result[] = $data;
+        }
+        return $result;
+    }
+
+    // Simpan Artikel
+    function simpan_Artikel($judul, $slug, $content, $is_published, $thumbnail)
+    {
+        $sql = "INSERT INTO article (title, slug, thumbnail, content, is_published) VALUES ('$judul', '$slug', '$thumbnail', '$content', '$is_published')";
+        $query = mysqli_query($this->connect_db, $sql);
+        if ($query) {
+            header("Location: index_artikel.php");
+        } else {
+            echo "<script>";
+            echo "alert('Artikel Gagal Ditambahkan karena masalah Database')";
+            echo "</script>";
+        }
+    }
+
+    // Update Artikel
+    function update_Artikel($judul, $slug, $content, $is_published, $thumbnail, $id)
+    {
+        $sql = "UPDATE article set title = '$judul', slug = '$slug', content = '$content', is_published = '$is_published', thumbnail = '$thumbnail' WHERE id = $id";
+        $query = mysqli_query($this->connect_db, $sql);
+        if ($query) {
+            header("Location: index_artikel.php");
+        } else {
+            echo "<script>";
+            echo "alert('Artikel Gagal Diupdate karena masalah Database')";
+            echo "</script>";
+        }
+    }
+
+    // Hapus Artikel
+    function delete_Artikel($id)
+    {
+        $sql = "DELETE FROM article WHERE id = $id";
+        $query = mysqli_query($this->connect_db, $sql);
+        if ($query) {
+            header("Location: index_artikel.php");
+        } else {
+            echo "<script>";
+            echo "alert('Artikel Gagal Dihapus karena masalah Database')";
+            echo "</script>";
+        }
+    }
 }
