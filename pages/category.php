@@ -6,6 +6,7 @@ $db = new Connect_db();
 $slug = $_GET['article'];
 
 $artikel_data = $db->db_From_Id("SELECT * FROM article where slug = '$slug'");
+$banner_data = $db->get_Banner();
 ?>
 
 <!DOCTYPE html>
@@ -55,42 +56,43 @@ $artikel_data = $db->db_From_Id("SELECT * FROM article where slug = '$slug'");
 
    <!--banner section start -->
    <div class="container">
-      <nav class="navbar navbar-dark bg-dark">
-         <a class="logo" href="index.php">
-            <h1>HOME</h1>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <a class="navbar-brand" href="#">
+            <h1 style="padding-top: 10px;">Home</h1>
          </a>
-         <div class="search_section">
-            <ul>
-               <li><a href="pages/login.php" style="font-family: Arial, Helvetica, sans-serif;"><button type="button" class="btn btn-light"><b>Login</b></button></a></li>
-            </ul>
-         </div>
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
          </button>
-         <div class="collapse navbar-collapse" id="navbarsExample01">
-            <ul class="navbar-nav mr-auto">
-               <li class="nav-item active">
-                  <a class="nav-link" href="pages/category.php" style="font-family:Arial, Helvetica, sans-serif ;"><b>Pelatih</b></a>
-               </li>
+
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
                <li class="nav-item">
-                  <a class="nav-link" href="pages/login.php" style="font-family: Arial, Helvetica, sans-serif;"><b>Login</b></a>
+                  <a class="btn btn-light btn-login-text" href="pages/login.php" target="_blank">Login</a>
                </li>
             </ul>
-
          </div>
       </nav>
-      <div class="images/ahs.jpeg"><img src="../images/ahs.jpeg" alt="images/ahs.jpeg" height="8000" width="8000"></div>
-      <div id="my_slider" class="carousel slide" data-ride="carousel">
-         <div class="carousel-inner">
-            <div class="carousel-item active">
-               <div class="row">
-                  <div class="col-md-6">
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
    </div>
+
+   <div class="container">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+         <div class="carousel-inner">
+            <?php foreach ($banner_data as $key => $data) : ?>
+               <?php $activeClass = $key === 0 ? 'active' : ''; ?>
+               <div class="carousel-item <?php echo $activeClass; ?>">
+                  <img class="d-block w-100" src="../<?php echo $data['image']; ?>" alt="Slide image">
+               </div>
+            <?php endforeach; ?>
+         </div>
+         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+         </a>
+         <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+         </a>
+      </div>
    </div>
    <!--banner section end -->
 

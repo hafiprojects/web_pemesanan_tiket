@@ -4,6 +4,7 @@ include("../proses.php");
 $db = new Connect_db();
 
 $artikel_data = $db->get_Artikel();
+$banner_data = $db->get_Banner();
 ?>
 
 <!DOCTYPE html>
@@ -66,15 +67,12 @@ $artikel_data = $db->get_Artikel();
    <div class="container">
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
          <div class="carousel-inner">
-            <div class="carousel-item active">
-               <img class="d-block w-100" src="../images/ahs.jpeg" alt="First slide">
-            </div>
-            <div class="carousel-item">
-               <img class="d-block w-100" src="../images/ahs.jpeg" alt="Second slide">
-            </div>
-            <div class="carousel-item">
-               <img class="d-block w-100" src="../images/ahs.jpeg" alt="Third slide">
-            </div>
+            <?php foreach ($banner_data as $key => $data) : ?>
+               <?php $activeClass = $key === 0 ? 'active' : ''; ?>
+               <div class="carousel-item <?php echo $activeClass; ?>">
+                  <img class="d-block w-100" src="../<?php echo $data['image']; ?>" alt="Slide image">
+               </div>
+            <?php endforeach; ?>
          </div>
          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
